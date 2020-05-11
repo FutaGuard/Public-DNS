@@ -31,6 +31,6 @@
 - [CoinBlockerLists by ZeroDot1](https://zerodot1.gitlab.io/CoinBlockerLists/hosts) [(首頁)](https://zerodot1.gitlab.io/CoinBlockerListsWeb/)
   針對網頁挖礦的過濾清單。
 - [NSABlocklist](https://github.com/CHEF-KOCH/NSABlocklist/raw/master/HOSTS/HOSTS) [(首頁)](https://github.com/CHEF-KOCH/NSABlocklist/)
-  過濾已知 NSA / GCHQ / C.I.A. / F.B.I. 的~~釣魚~~伺服器 (所以我都叫這清單 USASpy)
+  過濾已知 NSA / GCHQ / C.I.A. / F.B.I. 的~~釣魚~~伺服器（所以我都叫這清單 USASpy）。
 - [FutaGuard](https://futaguard.github.io/FutaFilter/hosts.txt) [(首頁)](https://github.com/FutaGuard/FutaFilter)
   本專案負責維護的過濾清單，跟第一個一樣是處理一些網站的異常情況。
