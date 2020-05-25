@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>com.adguardteam.dnsproxy</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>/usr/local/bin/dnsproxy</string>
+            <string>-l</string>
+            <string>127.0.0.1</string>
+            <string>-u</string>
+            <string>tls://dns.adguard.com</string>
+            <string>-u</string>
+            <string>tls://dns.google.com</string>
+            <string>-b</string>
+            <string>8.8.8.8:53</string>
+            <string>--all-servers</string>
+        </array>
+        <key>KeepAlive</key>
+        <true />
+        <key>RunAtLoad</key>
+        <true />
+    </dict>
+</plist>
