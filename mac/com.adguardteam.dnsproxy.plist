@@ -12,7 +12,7 @@
             <string>-u</string>
             <string>tls://dns.adguard.com</string>
             <string>-u</string>
-            <string>tls://dns.google.com</string>
+            <string>tls://dns.google</string>
             <string>-b</string>
             <string>8.8.8.8:53</string>
             <string>--all-servers</string>
