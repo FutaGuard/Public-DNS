@@ -46,13 +46,13 @@
 
 ### Windows
 
-- 安裝最新版 [AuroraDNS.GUI](https://github.com/mili-tan/AuroraDNS.GUI/releases) 後開啟主視窗戳「設置」。
+- 安裝最新版 [AuroraDNS.GUI](https://github.com/mili-tan/AuroraDNS.GUI/releases) 後開啟主視窗戳「設置」。\
 ![win_01](https://p176.p0.n0.cdn.getcloudapp.com/items/Apujg1pP/Snipaste_2020-05-12_11-54-58.png)
 
-- 依照紅框圈選的部分來設定，完成後點擊確定。
+- 依照紅框圈選的部分來設定，完成後點擊確定。\
 ![win_02](https://p176.p0.n0.cdn.getcloudapp.com/items/geuWQY5b/2.png)
 
-- 最後點擊最左側的圖是更換系統 DNS。
+- 最後點擊最左側的圖是更換系統 DNS。\
 ![win_03](https://p176.p0.n0.cdn.getcloudapp.com/items/kpuLrmPp/3.png)
 
 - 最後點開 <https://futadns.sudo.host> 測試。
