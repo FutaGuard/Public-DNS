@@ -6,7 +6,7 @@
 - 使用 [AdGuard Home](https://adguard.com/en/adguard-home/overview.html) 穩定版作為 DNS 伺服器
 - DNS 伺服器僅提供 DoT 及 DoH 查詢
 - 服務位址請向低吸索取
-- 有任何問題請至 Telegram 群或者發 [issue](issues) 告知
+- 有任何問題請至 Telegram 群或者發 [issue](https://github.com/FutaGuard/Public-DNS/issues) 告知
 
 ## 目錄
 
