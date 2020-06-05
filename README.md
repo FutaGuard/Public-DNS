@@ -9,19 +9,26 @@
 - 有任何問題請至 Telegram 群或者發 [issue](https://github.com/FutaGuard/Public-DNS/issues) 告知
 
 ## 目錄
- - [使用的過濾清單 (依訂閱順序排序)](#使用的過濾清單-依訂閱順序排序)
- - [DoT & DoH 使用方式](#dot--doh-使用方式)
+
+- [使用的過濾清單 (依訂閱順序排序)](#使用的過濾清單-依訂閱順序排序)
+- [DoT & DoH 使用方式](#dot--doh-使用方式)
 
 ## 使用的過濾清單 (依訂閱順序排序)
 
-- [某個路人的](https://bestpika.github.io/abp/hosts.txt)\
+- [毫無反應](https://bestpika.github.io/abp/hosts.txt)\
   解決部分網站異常使用。
+- [FutaFilter](https://filter.futa.gg/hosts.txt) [(首頁)](https://github.com/FutaGuard/FutaFilter)\
+  本專案負責維護的過濾清單，跟第一個一樣是處理一些網站的異常情況。
+- [NSABlocklist](https://github.com/CHEF-KOCH/NSABlocklist/raw/master/HOSTS/HOSTS) [(首頁)](https://github.com/CHEF-KOCH/NSABlocklist/)\
+  過濾已知 NSA / GCHQ / C.I.A. / F.B.I. 的~~釣魚~~伺服器（所以我都叫這清單 USASpy）。
 - [AdGuardSDNS](https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt)\
   AdGuard 官方的 DNS 過濾清單。
 - [280blocker](https://280blocker.net/files/280blocker_domain_ag.txt) [(首頁)](https://280blocker.net)\
   日本人維護的過濾清單。目標是處理 mobile 的廣告，大部分的過濾域名是 `.jp` 結尾。
 - [SomeoneWhoCares](https://someonewhocares.org/hosts/zero/hosts) [(首頁)](https://someonewhocares.org)\
   主要是用來過濾間諜、木馬網站，兼有過濾廣告功能。
+- [NeoDev](https://github.com/neodevpro/neodevhost/raw/master/adblockercombine) [(首頁)](https://github.com/neodevpro/neodevhost)\
+  整合清單型 (包含白名單)。
 - [AdAway](https://adaway.org/hosts.txt) [(首頁)](https://adaway.org)\
   應用程式 [AdAway](https://f-droid.org/packages/org.adaway/) 使用的過濾清單。
 - [AdAway (Japan Enhanced)](https://logroid.github.io/adaway-hosts/hosts_no_white.txt) [(首頁)](https://logroid.github.io/adaway-hosts/)\
@@ -34,25 +41,18 @@
   針對釣魚網站的過濾清單。
 - [CoinBlockerLists by ZeroDot1](https://zerodot1.gitlab.io/CoinBlockerLists/hosts) [(首頁)](https://zerodot1.gitlab.io/CoinBlockerListsWeb/)\
   針對網頁挖礦的過濾清單。
-- [NSABlocklist](https://github.com/CHEF-KOCH/NSABlocklist/raw/master/HOSTS/HOSTS) [(首頁)](https://github.com/CHEF-KOCH/NSABlocklist/)\
-  過濾已知 NSA / GCHQ / C.I.A. / F.B.I. 的~~釣魚~~伺服器（所以我都叫這清單 USASpy）。
-- [FutaFilter](https://futaguard.github.io/FutaFilter/hosts.txt) [(首頁)](https://github.com/FutaGuard/FutaFilter)\
-  本專案負責維護的過濾清單，跟第一個一樣是處理一些網站的異常情況。
 
 ## DoT & DoH 使用方式
 
 ### Windows
 
-下載 [Aurora DNS](https://github.com/mili-tan/AuroraDNS.GUI) 並開啟然後戳「設置」
+- 安裝最新版 [AuroraDNS.GUI](https://github.com/mili-tan/AuroraDNS.GUI/releases) 後開啟主視窗戳「設置」。
+![win_01](https://p176.p0.n0.cdn.getcloudapp.com/items/Apujg1pP/Snipaste_2020-05-12_11-54-58.png)
 
-![autota_01](https://p176.p0.n0.cdn.getcloudapp.com/items/Apujg1pP/Snipaste_2020-05-12_11-54-58.png)
+- 依照紅框圈選的部分來設定，完成後點擊確定。
+![win_02](https://p176.p0.n0.cdn.getcloudapp.com/items/geuWQY5b/2.png)
 
-依照紅框圈選的部分來設定，完成後點擊確定。
+- 最後點擊最左側的圖是更換系統 DNS。
+![win_03](https://p176.p0.n0.cdn.getcloudapp.com/items/kpuLrmPp/3.png)
 
-![autota_02](https://p176.p0.n0.cdn.getcloudapp.com/items/geuWQY5b/2.png)
-
-最後點擊最左側的 icon 更換電腦 DNS。
-
-![aurora_03](https://p176.p0.n0.cdn.getcloudapp.com/items/kpuLrmPp/3.png)
-
-最後點開 https://futadns.sudo.host 測試。
+- 最後點開 <https://futadns.sudo.host> 測試。
