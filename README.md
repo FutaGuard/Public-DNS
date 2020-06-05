@@ -46,6 +46,8 @@
 
 ### Windows
 
+<details><summary>展開</summary>
+
 - 安裝最新版 [AuroraDNS.GUI](https://github.com/mili-tan/AuroraDNS.GUI/releases) 後開啟主視窗戳「設置」。\
 ![win_01](https://p176.p0.n0.cdn.getcloudapp.com/items/Apujg1pP/Snipaste_2020-05-12_11-54-58.png)
 
@@ -56,3 +58,5 @@
 ![win_03](https://p176.p0.n0.cdn.getcloudapp.com/items/kpuLrmPp/3.png)
 
 - 最後點開 <https://futadns.sudo.host> 測試。
+
+</details>
