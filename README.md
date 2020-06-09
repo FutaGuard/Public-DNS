@@ -57,6 +57,6 @@
 - 最後點擊最左側的圖是更換系統 DNS。\
 ![win_03](https://p176.p0.n0.cdn.getcloudapp.com/items/kpuLrmPp/3.png)
 
-- 最後點開 <https://futadns.sudo.host> 測試。
+- 最後點開 <https://check.futa.gg> 測試。
 
 </details>
