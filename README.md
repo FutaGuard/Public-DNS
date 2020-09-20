@@ -19,15 +19,13 @@
   解決部分網站異常使用。
 - [FutaFilter](https://filter.futa.gg/hosts.txt) [(首頁)](https://github.com/FutaGuard/FutaFilter)\
   本專案負責維護的過濾清單，跟第一個一樣是處理一些網站的異常情況。
-- [NSABlocklist](https://github.com/CHEF-KOCH/NSABlocklist/raw/master/HOSTS/HOSTS) [(首頁)](https://github.com/CHEF-KOCH/NSABlocklist/)\
-  過濾已知 NSA / GCHQ / C.I.A. / F.B.I. 的~~釣魚~~伺服器（所以我都叫這清單 USASpy）。
-- [AdGuardSDNS](https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt)\
+- [AdGuard DNS](https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt)\
   AdGuard 官方的 DNS 過濾清單。
 - [280blocker](https://280blocker.net/files/280blocker_domain_ag.txt) [(首頁)](https://280blocker.net)\
   日本人維護的過濾清單。目標是處理 mobile 的廣告，大部分的過濾域名是 `.jp` 結尾。
 - [SomeoneWhoCares](https://someonewhocares.org/hosts/zero/hosts) [(首頁)](https://someonewhocares.org)\
   主要是用來過濾間諜、木馬網站，兼有過濾廣告功能。
-- [NeoDev](https://github.com/neodevpro/neodevhost/raw/master/adblockercombine) [(首頁)](https://github.com/neodevpro/neodevhost)\
+- [NeoDev](https://github.com/neodevpro/neodevhost/raw/master/lite_adblocker) [(首頁)](https://github.com/neodevpro/neodevhost)\
   整合清單型 (包含白名單)。
 - [AdAway](https://adaway.org/hosts.txt) [(首頁)](https://adaway.org)\
   應用程式 [AdAway](https://f-droid.org/packages/org.adaway/) 使用的過濾清單。
@@ -36,6 +34,8 @@
 - [Malware Domain List](https://www.malwaredomainlist.com/hostslist/hosts.txt) [(首頁)](https://www.malwaredomainlist.com)\
   故名思義，這個過濾清單是針對惡意域名的。
 - [Malware Domain Blocklist by RiskAnalytics](https://mirror1.malwaredomains.com/files/domains.hosts) [(首頁)](https://www.malwaredomains.com)\
+  同上。
+- [URLhaus](https://gitlab.com/curben/urlhaus-filter/raw/master/urlhaus-filter-agh.txt) [(首頁)](https://gitlab.com/curben/urlhaus-filter)\
   同上。
 - Phishing Army [基本](https://phishing.army/download/phishing_army_blocklist.txt) [延伸](https://phishing.army/download/phishing_army_blocklist_extended.txt) [(首頁)](https://phishing.army)\
   針對釣魚網站的過濾清單。
