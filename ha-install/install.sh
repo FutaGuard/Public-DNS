@@ -41,12 +41,12 @@ install_dependencies() {
     log_info "Installing dependencies..."
     if [[ "$OS" == "ubuntu" || "$OS" == "debian" ]]; then
         apt-get update -qq
-        apt-get install -y curl wget tar dnsutils
+        apt-get install -y curl wget tar
     elif [[ "$OS" == "centos" || "$OS" == "rhel" || "$OS" == "fedora" ]]; then
         if command -v dnf &> /dev/null; then
-            dnf install -y curl wget tar bind-utils
+            dnf install -y curl wget tar
         else
-            yum install -y curl wget tar bind-utils
+            yum install -y curl wget tar
         fi
     else
         log_err "Unsupported OS: $OS"
@@ -95,9 +95,15 @@ install_q() {
         log_info "'q' DNS client already installed."
     else
         log_info "Installing 'q' DNS client..."
-        # Fetch latest release for linux amd64
-        # Assumes tar.gz release structure
-        curl -sL https://github.com/natesales/q/releases/latest/download/q_linux_amd64.tar.gz -o q.tar.gz
+        local q_url
+        q_url=$(curl -fsSL https://api.github.com/repos/natesales/q/releases/latest | grep -o 'https://[^"]*q_[^"]*_linux_amd64\.tar\.gz' | head -n 1)
+
+        if [ -z "$q_url" ]; then
+            log_err "Failed to determine latest 'q' release asset."
+            exit 1
+        fi
+
+        curl -fsSL "$q_url" -o q.tar.gz
         tar xvf q.tar.gz q
         mv q /usr/local/bin/q
         chmod +x /usr/local/bin/q
