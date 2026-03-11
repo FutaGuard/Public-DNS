@@ -114,20 +114,17 @@ install_q() {
 
 
 install_adguardhome() {
-    if [ -f "$INSTALL_DIR/AdGuardHome" ]; then
-        log_info "AdGuard Home already installed in $INSTALL_DIR"
+    if [ -f "/opt/AdGuardHome/AdGuardHome" ]; then
+        log_info "AdGuard Home already installed in /opt/AdGuardHome"
     else
         log_info "Installing AdGuard Home..."
-        mkdir -p "$INSTALL_DIR"
-        cd "$INSTALL_DIR"
+        mkdir -p /opt
         
-        # Download latest
-        curl -s -L https://static.adguard.com/adguardhome/release/AdGuardHome_linux_amd64.tar.gz -o AdGuardHome.tar.gz
-        tar xvf AdGuardHome.tar.gz --strip-components=1
-        rm AdGuardHome.tar.gz
+        curl -s -L https://static.adguard.com/adguardhome/release/AdGuardHome_linux_amd64.tar.gz -o /opt/AdGuardHome.tar.gz
+        tar xvf /opt/AdGuardHome.tar.gz -C /opt
+        rm /opt/AdGuardHome.tar.gz
         
-        # Install Service
-        ./AdGuardHome -s install
+        /opt/AdGuardHome/AdGuardHome -s install
         log_info "AdGuard Home Service Installed."
     fi
 }
