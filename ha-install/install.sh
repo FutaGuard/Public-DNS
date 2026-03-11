@@ -130,6 +130,13 @@ setup_watchdog() {
     log_info "Setting up DNS Watchdog..."
     cp "$PWD/dns-watchdog.sh" /usr/local/bin/dns-watchdog.sh
     chmod +x /usr/local/bin/dns-watchdog.sh
+    read -p "Enter DoH URL for watchdog (e.g. http://127.0.0.1/dns-query or https://example.com:5053/dns-query): " DOH_URL
+    if [ -z "$DOH_URL" ]; then
+        log_err "DOH_URL cannot be empty."
+        exit 1
+    fi
+    sed -i.bak "s|^DOH_URL=.*|DOH_URL=\"$DOH_URL\"|" /usr/local/bin/dns-watchdog.sh
+    rm -f /usr/local/bin/dns-watchdog.sh.bak
     
     # Create Service
     cat <<EOF > /etc/systemd/system/dns-watchdog.service
