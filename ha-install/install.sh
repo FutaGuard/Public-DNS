@@ -223,13 +223,22 @@ EOF
 
 # --- Main Flow ---
 
+MODE="${1:-install}"
+
+if [ "$MODE" == "sync" ]; then
+    setup_replica_sync
+    log_info "Replica sync setup complete."
+    exit 0
+fi
+
+if [ "$MODE" != "install" ]; then
+    log_err "Unknown mode: $MODE"
+    log_info "Usage: $0 [install|sync]"
+    exit 1
+fi
+
 detect_os
 install_dependencies
-
-echo "Select Node Role:"
-echo "1) Primary (Master)"
-echo "2) Replica (Slave)"
-read -p "Choice [1/2]: " role
 
 install_tailscale
 install_cloudflared
@@ -237,11 +246,7 @@ install_q
 install_adguardhome
 setup_watchdog
 
-if [ "$role" == "2" ]; then
-    setup_replica_sync
-fi
-
 log_info "Installation Complete!"
 log_info "1. Configure AdGuard Home at http://YOUR_IP:3000"
 log_info "2. Run 'cloudflared tunnel login' and 'cloudflared tunnel create <NAME>' if not done."
-log_info "3. If Replica, check 'systemctl status adguardhome-sync' logs."
+log_info "3. If this node is a replica, run '$0 sync' after Tailscale login is complete."
