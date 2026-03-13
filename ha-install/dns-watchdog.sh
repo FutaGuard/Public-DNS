@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOH_URL="http://127.0.0.1/dns-query"
+DOH_URL="http://127.0.0.1:8100/dns-query"
 TEST_DOMAIN="google.com"
 FAIL_THRESHOLD=3
 LOG_FILE="/var/log/dns-watchdog.log"
@@ -39,7 +39,8 @@ MAX_RETRIES=3
 # Simple check logic: If fails, try again immediately up to MAX_RETRIES times
 # If still fails, then consider it DOWN.
 
-for (( i=1; i<=MAX_RETRIES; i++ )); do
+i=1
+while [ "$i" -le "$MAX_RETRIES" ]; do
     if check_dns; then
         # Success
         if ! systemctl is-active --quiet cloudflared; then
@@ -52,6 +53,7 @@ for (( i=1; i<=MAX_RETRIES; i++ )); do
         log "DNS check attempt $i failed."
         sleep 2
     fi
+    i=$((i + 1))
 done
 
 # If we reached here, DNS is down
