@@ -28,7 +28,7 @@ check_dns() {
 }
 
 # Check if cloudflared is managed by systemd
-if ! systemctl list-unit-files | grep -q cloudflared.service; then
+if ! systemctl cat cloudflared.service &> /dev/null; then
     log "Error: cloudflared.service not found. Is it installed?"
     exit 1
 fi
