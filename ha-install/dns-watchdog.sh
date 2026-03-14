@@ -28,10 +28,10 @@ check_dns() {
 }
 
 # Check if cloudflared is managed by systemd
-if ! systemctl cat cloudflared.service &> /dev/null; then
-    log "Error: cloudflared.service not found. Is it installed?"
-    exit 1
-fi
+# if ! systemctl cat cloudflared.service &> /dev/null; then
+#     log "Error: cloudflared.service not found. Is it installed?"
+#     exit 1
+# fi
 
 FAIL_COUNT=0
 MAX_RETRIES=3
