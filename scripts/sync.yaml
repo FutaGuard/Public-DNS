@@ -1,0 +1,59 @@
+cron: */5 * * * *
+runOnStart: true
+printConfigOnly: false # (bool) Print current config only and stop the application
+continueOnError: true # (bool) Continue sync on errors
+httpClientTimeout: 10s # (string) Define a custom http client timeout ^([0-9]+(\.[0-9]+)?(ns|us|µs|ms|s|m|h))+$
+origin: # (struct) Origin instance
+  url: http://127.0.0.1:8100 # (string) URL of adguardhome instance
+  webURL: http://127.0.0.1:8100 # (string) Web URL of adguardhome instance
+  apiPath: /control # (string) API Path
+  username: {$USERNAME}  # (string) Adguardhome username
+  password: {$PASSWORD} # (string) Adguardhome password
+  cookie: # (string) Adguardhome cookie
+  requestHeaders: # (map) Request Headers 'key1:value1,key2:value2'
+  insecureSkipVerify: false # (bool) Skip TLS verification
+  autoSetup: true # (bool) Automatically setup the instance if it is not initialized
+  interfaceName: eth0 # (string) Network interface name
+  dhcpServerEnabled: false # (bool) Enable DHCP server
+
+replicas:
+  - url: http://100.64.0.15:8100 # SkyDigi
+    webURL: http://100.64.0.15:8100
+    apiPath: /control
+    username: {$USERNAME}
+    password: {$PASSWORD}
+    insecureSkipVerify: false
+    autoSetup: true
+    interfaceName: eth0
+    dhcpServerEnabled: false
+
+api:
+  port: 8100 # (int) API port (API is disabled if port is set to 0)
+  username: {$USERNAME}
+  password: {$PASSWORD}
+  darkMode: true
+  metrics:
+    enabled: true # (bool) Enable metrics
+    scrapeInterval: 10 # (int64) Interval for metrics scraping
+    queryLogLimit: 100 # (int) Metrics log query limit
+  # tls: # (struct) 
+  #   certDir: # (string) API TLS certificate directory
+  #   certName: # (string) API TLS certificate file name
+  #   keyName: # (string) API TLS key file name
+features:
+  dns:
+    accessLists: true
+    serverConfig: true
+    rewrites: true
+  dhcp:
+    serverConfig: false
+    staticLeases: false
+  generalSettings: true
+  protectionStatus: true
+  queryLogConfig: true
+  statsConfig: true
+  clientSettings: false
+  services: false
+  filters: true
+  theme: true
+  tlsConfig: false

@@ -1,0 +1,9 @@
+[Unit]
+Description = AdGuardHome Sync
+After = network.target
+
+[Service]
+ExecStart = /opt/adguardhome-sync/adguardhome-sync --config /opt/adguardhome-sync/adguardhome-sync.yaml run
+
+[Install]
+WantedBy = multi-user.target

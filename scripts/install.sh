@@ -171,65 +171,7 @@ EOF
     log_info "DNS Watchdog Timer Enabled."
 }
 
-setup_replica_sync() {
-    log_info "Setting up AdGuardHome Sync..."
-    
-    # Install Binary
-    # Only supporting AMD64 for simplicity in this script, adjust for ARM if needed
-    local url="https://github.com/bakito/adguardhome-sync/releases/latest/download/adguardhome-sync-linux-amd64"
-    curl -L -o /usr/local/bin/adguardhome-sync "$url"
-    chmod +x /usr/local/bin/adguardhome-sync
-    
-    mkdir -p /etc/adguardhome-sync
-    
-    read -p "Enter Primary (Master) AdGuard URL (e.g. http://100.x.y.z:80): " ORIGIN_URL
-    read -p "Enter Primary Username: " ORIGIN_USER
-    read -s -p "Enter Primary Password: " ORIGIN_PASS
-    echo ""
-    
-    # Create Config
-    cat <<EOF > /etc/adguardhome-sync/adguardhome-sync.yaml
-api:
-  origin:
-    url: "$ORIGIN_URL"
-    username: "$ORIGIN_USER"
-    password: "$ORIGIN_PASS"
-  replica:
-    url: "http://127.0.0.1:80" # Localhost
-    username: "$ORIGIN_USER" # Assuming same creds for simplicity, or ask user?
-    password: "$ORIGIN_PASS"
-cron: "*/1 * * * *" # Sync every minute
-runOnStart: true
-EOF
-    
-    # Create Service
-    cat <<EOF > /etc/systemd/system/adguardhome-sync.service
-[Unit]
-Description=AdGuardHome Sync Service
-After=network.target
-
-[Service]
-ExecStart=/usr/local/bin/adguardhome-sync run --config /etc/adguardhome-sync/adguardhome-sync.yaml
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-    systemctl daemon-reload
-    systemctl enable --now adguardhome-sync
-    log_info "AdGuardHome Sync Service Enabled."
-}
-
-# --- Main Flow ---
-
 MODE="${1:-install}"
-
-if [ "$MODE" == "sync" ]; then
-    setup_replica_sync
-    log_info "Replica sync setup complete."
-    exit 0
-fi
 
 if [ "$MODE" != "install" ]; then
     log_err "Unknown mode: $MODE"
@@ -249,4 +191,3 @@ setup_watchdog
 log_info "Installation Complete!"
 log_info "1. Configure AdGuard Home at http://YOUR_IP:3000"
 log_info "2. Run 'cloudflared tunnel login' and 'cloudflared tunnel create <NAME>' if not done."
-log_info "3. If this node is a replica, run '$0 sync' after Tailscale login is complete."
