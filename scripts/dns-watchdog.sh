@@ -6,8 +6,25 @@ FAIL_THRESHOLD=3
 LOG_FILE="/var/log/dns-watchdog.log"
 
 
+TG_BOT_TOKEN=""
+TG_CHAT_ID="-1001432960351"
+TG_THREAD_ID="213263"
+HOST_NAME="${HOSTNAME}"
+
 log() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') $1" | tee -a "$LOG_FILE"
+}
+
+send_tg() {
+    local message="$1"
+    if command -v curl &> /dev/null; then
+        curl -s -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
+            -d chat_id="${TG_CHAT_ID}" \
+            -d message_thread_id="${TG_THREAD_ID}" \
+            -d text="${message}" > /dev/null
+    else
+        log "Warning: curl not found, cannot send Telegram notification."
+    fi
 }
 
 check_dns() {
@@ -45,6 +62,7 @@ while [ "$i" -le "$MAX_RETRIES" ]; do
         # Success
         if ! systemctl is-active --quiet cloudflared; then
             log "DNS check PASSED. Starting cloudflared..."
+            send_tg "🟢 ${HOST_NAME} DNS check PASSED. Starting cloudflared..."
             systemctl start cloudflared
         fi
         exit 0
@@ -59,6 +77,7 @@ done
 # If we reached here, DNS is down
 if systemctl is-active --quiet cloudflared; then
     log "DNS check FAILED after $MAX_RETRIES attempts. Stopping cloudflared to divert traffic."
+    send_tg "🔴 ${HOST_NAME} DNS check FAILED after $MAX_RETRIES attempts. Stopping cloudflared to divert traffic."
     systemctl stop cloudflared
 else
     log "DNS check FAILED. Cloudflared is already stopped."
